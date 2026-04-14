@@ -10,6 +10,12 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+Route::get('/services', function () {
+    return view('landing.services', [
+        'title' => 'Servicios - Fercho Sistemas',
+    ]);
+})->name('services');
+
 
 Route::get('/contacto', function () {
     return view('contact', [
@@ -27,11 +33,7 @@ Route::get('/dashboard', function () {
     ]);
 })->name('dashboard')->middleware('auth');
 
-Route::get('/services', function () {
-    return view('services', [
-        'title' => 'Servicios - Fercho Sistemas',
-    ]);
-})->name('services');
+
 
 
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');

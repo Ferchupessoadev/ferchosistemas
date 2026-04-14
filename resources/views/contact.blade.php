@@ -24,22 +24,22 @@
                 <div class="grid md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm text-gray-400 mb-1">Nombre</label>
-                        <input type="text" name="name" value="{{ old('name') }}" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-white focus:border-blue-500 outline-none" required>
+                        <input type="text" name="name" placeholder="Tu nombre" value="{{ old('name') }}" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-white focus:border-blue-500 outline-none" required>
                         @error('name') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                     </div>
                     <div>
                         <label class="block text-sm text-gray-400 mb-1">Email</label>
-                        <input type="email" name="email" value="{{ old('email') }}" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-white focus:border-blue-500 outline-none" required>
+                        <input type="email" name="email" placeholder="Tu email" value="{{ old('email') }}" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-white focus:border-blue-500 outline-none" required>
                         @error('email') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                     </div>
                 </div>
                 <div>
                     <label class="block text-sm text-gray-400 mb-1">Asunto</label>
-                    <input type="text" name="subject" value="{{ old('subject') }}" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-white focus:border-blue-500 outline-none">
+                    <input type="text" name="subject" placeholder="Asunto del mensaje" value="{{ old('subject') }}" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-white focus:border-blue-500 outline-none">
                 </div>
                 <div>
                     <label class="block text-sm text-gray-400 mb-1">Mensaje</label>
-                    <textarea name="message" rows="5" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-white focus:border-blue-500 outline-none" required>{{ old('message') }}</textarea>
+                    <textarea name="message" placeholder="Tu mensaje" rows="5" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-white focus:border-blue-500 outline-none" required>{{ old('message') }}</textarea>
                     @error('message') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                 </div>
                 <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition shadow-lg shadow-blue-500/20">

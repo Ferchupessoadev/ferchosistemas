@@ -5,8 +5,40 @@
         </h1>
     </a>
 
-    <div class="space-x-6 flex items-center">
-        <a href="#servicios" class="hover:text-blue-400 transition">Servicios</a>
+    <div class="flex items-center gap-10">
+        <div class="flex items-center gap-10">
+        <div class="relative group">
+            <button class="flex items-center gap-1 hover:text-blue-400 transition focus:outline-none py-2">
+                <a href="#servicios">Servicios</a>
+                <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
+            </button>
+
+            <div class="absolute left-0 mt-0 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-2 transition-all duration-300 z-50">
+                <div class="bg-gray-900 border border-gray-700 rounded-xl shadow-xl overflow-hidden">
+                    <a href="#soporte" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 hover:text-blue-400 transition">
+                        <i data-lucide="monitor" class="w-4 h-4"></i>
+                        <span>Soporte Técnico</span>
+                    </a>
+                    <a href="#desarrollo" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 hover:text-blue-400 transition">
+                        <i data-lucide="code-2" class="w-4 h-4"></i>
+                        <span>Desarrollo Web</span>
+                    </a>
+                    <a href="#seguridad" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 hover:text-blue-400 transition">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                        <span>Seguridad</span>
+                    </a>
+                    <div class="border-t border-gray-800"></div>
+                    <a href="#redes" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 hover:text-blue-400 transition">
+                        <i data-lucide="network" class="w-4 h-4"></i>
+                        <span>Redes e Infraestructura</span>
+                    </a>
+                    <a href="#consultoria" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 hover:text-blue-400 transition">
+                        <i data-lucide="briefcase" class="w-4 h-4"></i>
+                        <span>Consultoría IT</span>
+                    </a>
+                </div>
+            </div>
+        </div>
         <a href={{ route('contact') }} class="hover:text-blue-400 transition">Contacto</a>
         <a href="https://www.instagram.com/ferchosistemas/" target="_blank" class="rounded-lg hover:scale-105 transition duration-200">
             <x-icons.instagram class="size-8"></x-icons.instagram>

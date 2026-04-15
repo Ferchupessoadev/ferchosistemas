@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans">
     <x-navbar.home></x-navbar.home>
@@ -48,5 +49,7 @@
             </form>
         </div>
     </section>
+    <x-footer></x-footer>
+    <script>lucide.createIcons();</script>  
 </body>
 </html>

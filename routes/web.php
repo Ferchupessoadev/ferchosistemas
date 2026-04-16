@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Models\ContactMessage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => view('landing.home', [
+Route::get('/', fn () => 
+    view('landing.home', [
         'title' => 'Inicio - Fercho Sistemas'
     ]))->name('home');
 
@@ -16,7 +18,8 @@ Route::get('/services', fn() =>
     ]))->name('services');
 
 
-Route::get('/contacto', fn() => view('contact', [
+Route::get('/contacto', fn() => 
+    view('contact', [
         'title' => 'Contacto - Fercho Sistemas',
     ]))->name('contact');
 
@@ -33,6 +36,9 @@ Route::get('/dashboard', function () {
     ]);
     
     })->name('dashboard')->middleware('auth');
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+
 
 
 Route::get('/login', function() { 

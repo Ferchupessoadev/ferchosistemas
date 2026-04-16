@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fercho Sistemas | Soluciones Tecnológicas</title>
-    <x-partials.head></x-partials.head>
+    @include('partials.head')
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 

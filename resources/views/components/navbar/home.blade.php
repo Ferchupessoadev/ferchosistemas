@@ -38,8 +38,5 @@
             </div>
         </div>
         <a href={{ route('contact') }} class="hover:text-blue-400 transition">Contacto</a>
-        <a href="https://www.instagram.com/ferchosistemas/" target="_blank" class="rounded-lg hover:scale-105 transition duration-200">
-            <x-icons.instagram class="size-8"></x-icons.instagram>
-        </a>
     </div>
 </nav>

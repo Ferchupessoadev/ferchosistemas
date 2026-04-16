@@ -6,13 +6,12 @@
     </a>
 
     <div class="flex items-center gap-10">
-        <div class="flex items-center gap-10">
+        <a href={{ route('blog.index') }} class="hover:text-blue-400 transition">Blog</a>
         <div class="relative group">
             <button class="flex items-center gap-1 hover:text-blue-400 transition focus:outline-none py-2">
                 <a href="#servicios">Servicios</a>
                 <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
             </button>
-
             <div class="absolute left-0 mt-0 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-2 transition-all duration-300 z-50">
                 <div class="bg-gray-900 border border-gray-700 rounded-xl shadow-xl overflow-hidden">
                     <a href="#soporte" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 hover:text-blue-400 transition">
@@ -27,7 +26,6 @@
                         <i data-lucide="shield-check" class="w-4 h-4"></i>
                         <span>Seguridad</span>
                     </a>
-                    <div class="border-t border-gray-800"></div>
                     <a href="#redes" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 hover:text-blue-400 transition">
                         <i data-lucide="network" class="w-4 h-4"></i>
                         <span>Redes e Infraestructura</span>

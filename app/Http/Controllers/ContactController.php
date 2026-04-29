@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FormRequestContact;
 use App\Models\ContactMessage;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    public function store(Request $request)
+    public function store(FormRequestContact $request)
     {
-        // 1. Validar los datos
-        $data = $request->validate([
-            'name'  => 'required|min:3|max:100',
-            'email'   => 'required|email',
-            'subject'  => 'nullable|max:150',
-            'message' => 'required|min:10',
-        ]);
+        // 1. Recoger los datos
+        $data = $request->all();
 
         // 2. Guardar en la base de datos
         ContactMessage::create($data);

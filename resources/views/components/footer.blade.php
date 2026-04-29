@@ -1,6 +1,6 @@
 <footer class="bg-gray-950 text-gray-400 pt-16 pb-8 border-t border-gray-800">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
-        
+
         <div class="col-span-1 md:col-span-1">
             <h2 class="text-2xl font-bold text-white mb-4">
                 FERCHO <span class="text-blue-500">SISTEMAS</span>

@@ -27,7 +27,7 @@
                 <li><a href={{ route('home') }} class="hover:text-blue-500 transition">Inicio</a></li>
                 <li><a href={{ route('services') }} class="hover:text-blue-500 transition">Servicios</a></li>
                 <li><a href={{ route('contact') }} class="hover:text-blue-500 transition">Contacto</a></li>
-                <li><a href={{ route('login.index') }} class="hover:text-blue-500 transition italic text-gray-500">Acceso Staff</a></li>
+                <li><a href={{ route('login') }} class="hover:text-blue-500 transition italic text-gray-500">Acceso Staff</a></li>
             </ul>
         </div>
 

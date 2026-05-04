@@ -4,12 +4,12 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/login', function() { 
+Route::get('/login', function() {
     if(!Auth::check())
         return view('administrator.auth.login');
-    else 
+    else
         return redirect(route('dashboard'));
-    })->name('login.index');
+    })->name('login');
 
 Route::post('/login', [AuthController::class, 'store'])->name('login.store');
 

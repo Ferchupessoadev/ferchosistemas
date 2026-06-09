@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageController;
 
@@ -27,3 +28,6 @@ Route::get('/dashboard/blog/{post}', [PostController::class, 'show'])->middlewar
 Route::delete('/dashboard/blog/{post}', [PostController::class, 'destroy'])->middleware('auth')->name('dashboard.post.destroy');
 Route::get('/dashboard/blog/{post}/edit', [PostController::class, 'edit'])->middleware('auth')->name('dashboard.post.edit');
 Route::put('/dashboard/blog/{post}', [PostController::class, 'update'])->middleware('auth')->name('dashboard.post.update');
+
+
+Route::get('/dashboard/setting', [SettingController::class, 'index'])->middleware('auth')->name('dashboard.settings.index');

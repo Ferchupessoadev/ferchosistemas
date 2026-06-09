@@ -1,8 +1,9 @@
 <nav id="main-navbar" class="fixed top-0 z-50 w-full px-6 py-6 flex justify-between items-center bg-transparent transition-all duration-300">
     <a href="{{ route('home') }}" class="transition-transform duration-200 hover:scale-[1.02]">
-        <h1 class="text-2xl font-black tracking-tight text-blue-500">
-            Fercho <span class="text-white">Tech</span>
+        <h1 class="text-2xl font-black tracking-tight text-blue-500 sr-only">
+            Fercho Tech
         </h1>
+        <img class="h-16" src="{{ asset('assets/logo2.png') }}" alt="Logo de Fercho Tech">
     </a>
 
     <div class="hidden md:flex items-center gap-10 text-sm font-medium">

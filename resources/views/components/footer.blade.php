@@ -9,14 +9,20 @@
                 Soluciones integrales en tecnología, soporte técnico y desarrollo digital para potenciar tu negocio o proyecto personal.
             </p>
             <div class="flex space-x-4">
-                <a href="https://www.instagram.com/ferchosistemas/" target="_blank" class="hover:text-pink-500 transition-colors">
-                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                <a href="https://www.instagram.com/ferchotech.ok" target="_blank" class="hover:text-pink-500 transition-colors">
+                    <img src="{{ asset('assets/icons/instagram.svg') }}"
+                        alt="Instagram"
+                        class="size-8">
                 </a>
                 <a href="#" class="hover:text-blue-400 transition-colors">
-                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    <img src="{{ asset('assets/icons/linkedin.svg') }}"
+                        alt="Linkedin"
+                        class="size-8">
                 </a>
                 <a href="#" class="hover:text-gray-100 transition-colors">
-                    <i data-lucide="github" class="w-5 h-5"></i>
+                    <img src="{{ asset('assets/icons/github.svg') }}"
+                        alt="Github"
+                        class="size-8">
                 </a>
             </div>
         </div>
@@ -60,12 +66,6 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-gray-900 flex flex-col md:row justify-between items-center text-xs">
-        <p>&copy; 2026 Fercho Sistemas. Todos los derechos reservados.</p>
-        <p class="mt-2 md:mt-0 italic">Hecho con ❤️ y Laravel 12</p>
+        <p class="flex"><i data-lucide="copyright" class="w-4 h-4 mr-2"></i> 2026 Fercho Tech. Todos los derechos reservados.</p>
     </div>
 </footer>
-
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>
-    lucide.createIcons();
-</script>

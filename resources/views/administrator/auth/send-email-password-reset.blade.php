@@ -10,7 +10,7 @@
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans">
     <x-navbar.home></x-navbar.home>
-    <section class="min-h-[calc(100vh-89px)] bg-gray-950 flex items-center justify-center px-6 py-12">
+    <section class="min-h-[calc(100vh-89px)] flex items-center justify-center px-6 py-12">
         <div class="max-w-md w-full bg-gray-900 rounded-3xl border border-gray-800 p-10 shadow-2xl">
 
             <div class="text-center mb-10">
@@ -79,6 +79,7 @@
         </div>
     </section>
     <script>lucide.createIcons();</script>
+    <x-footer></x-footer>
 </body>
 </html>
 

@@ -22,7 +22,7 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.services.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class ServicesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Service $services)
+    public function show(Service $service)
     {
         //
     }
@@ -52,7 +52,7 @@ class ServicesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Service $services)
+    public function update(Request $request, Service $service)
     {
 
     }
@@ -60,8 +60,8 @@ class ServicesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Service $services)
+    public function destroy(Service $service)
     {
-        //
+
     }
 }

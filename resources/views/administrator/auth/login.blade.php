@@ -1,6 +1,6 @@
 <x-layouts.app title="Iniciar Sesión - Fercho Tech">
 
-    <section class="min-h-[calc(100vh-81px)] bg-[#080d1c] flex items-center justify-center px-6 py-12 relative overflow-hidden">
+    <section class="min-h-screen flex items-center justify-center px-6 py-12 relative overflow-hidden">
 
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
 

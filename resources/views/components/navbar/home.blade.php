@@ -1,164 +1,143 @@
-<nav id="main-navbar" class="fixed top-0 z-50 w-full px-6 py-6 flex justify-between items-center bg-transparent transition-all duration-300">
-    <a href="{{ route('home') }}" class="transition-transform duration-200 hover:scale-[1.02]">
-        <h1 class="text-2xl font-black tracking-tight text-blue-500 sr-only">
-            Fercho Tech
-        </h1>
-        <img class="h-16" src="{{ asset('assets/logo2.png') }}" alt="Logo de Fercho Tech">
-    </a>
-
-    <div class="hidden md:flex items-center gap-10 text-sm font-medium">
-        <a href="{{ route('home') }}"
-           class="transition-colors duration-200 {{ Route::is('home') ? 'text-blue-500 font-bold' : 'text-slate-300 hover:text-blue-400' }}">
-            Inicio
+<nav
+    x-data="{ scrolled: false, sidebarIsOpen: false }"
+    @scroll.window="scrolled = (window.scrollY > 20)"
+    @toggle-sidebar.window="sidebarIsOpen = !sidebarIsOpen"
+    :class="scrolled || sidebarIsOpen
+        ? 'bg-slate-950/90 border-slate-800/60 border-b shadow-xl shadow-black/40'
+        : 'bg-slate-900/50 border-transparent shadow-none'"
+    class="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-in-out backdrop-blur-md"
+>
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center transition-all duration-300">
+        <a href="{{ route('home') }}" class="transition-transform duration-300 hover:scale-105 active:scale-95 flex items-center">
+            <h1 class="sr-only">Fercho Tech</h1>
+            <img
+                class="h-12 w-auto object-contain transition-all duration-300"
+                src="{{ asset('assets/logo2.png') }}" alt="Logo de Fercho Tech"
+            >
         </a>
 
-        <a href="{{ route('about') }}"
-           class="transition-colors duration-200 {{ Route::is('about') ? 'text-blue-500 font-bold' : 'text-slate-300 hover:text-blue-400' }}">
-            Nosotros
-        </a>
+        <div class="hidden md:flex items-center gap-2 text-sm font-medium">
+            <x-navbar.nav-link href="{{ route('home') }}" label="Inicio" route-name="home" />
+            <x-navbar.nav-link href="{{ route('about') }}" label="Nosotros" route-name="about" />
+            @if(count($services) > 0)
+                <div class="relative" x-data="{ open: false }">
+                    <button
+                        @click="open = !open"
+                        @click.outside="open = false"
+                        class="flex items-center gap-1.5 px-4 py-2 rounded-xl transition-all duration-300 text-slate-300 hover:text-white hover:bg-slate-900/60 focus:outline-none cursor-pointer group"
+                    >
+                        <span>Servicios</span>
+                        <div class="transition-transform duration-300 ease-out text-slate-400 group-hover:text-white"
+                             :class="open ? 'rotate-180' : ''">
+                            <i data-lucide="chevron-down" class="size-4"></i>
+                        </div>
+                    </button>
 
-        <div class="relative">
-            <button id="menu-btn" class="flex items-center gap-1 transition-colors duration-200 focus:outline-none py-2 cursor-pointer text-slate-300 hover:text-blue-400 group">
-                <span>Servicios</span>
-                <div id="menu-arrow" class="transition-transform duration-300 ease-in-out">
-                    <i data-lucide="chevron-down" class="size-4"></i>
+                        <div
+                            x-show="open"
+                            x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 scale-95"
+                            x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 scale-100"
+                            x-transition:leave-end="opacity-0 scale-95"
+                            class="absolute left-1/2 -translate-x-1/2 mt-3 w-60 z-50 origin-top"
+                            style="display: none;"
+                        >
+                            <div class="bg-slate-950/95 backdrop-blur-2xl border border-slate-800 rounded-2xl shadow-2xl overflow-hidden p-1.5 dynamic-glow">
+                                @foreach ($services as $service)
+                                    <a href="{{ route('dashboard.services.show', $service)}}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-blue-500/10 hover:text-blue-400 transition-all duration-200">
+                                        <div class="p-2 bg-slate-900 rounded-lg text-slate-400">
+                                            <i data-lucide="{{ $service->icon }}" class="size-4"></i>
+                                        </div>
+                                        <span class="text-sm font-medium">{{ $service->name }}</span>
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
                 </div>
-            </button>
-
-            <div id="menu-dropdown" class="absolute left-1/2 -translate-x-1/2 mt-2 w-56 hidden opacity-0 scale-95 transition-all duration-200 z-50">
-                <div class="bg-slate-950/95 backdrop-blur-xl border border-slate-800 rounded-xl shadow-2xl overflow-hidden p-1">
-                    <a href="{{ route('home') }}#soporte" class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-900 hover:text-blue-400 transition-all duration-150">
-                        <i data-lucide="monitor" class="size-4"></i>
-                        <span class="text-sm">Soporte Técnico</span>
+            @endif
+            <x-navbar.nav-link href="{{ route('blog.index') }}" label="Blog" route-name="blog.index" />
+            <x-navbar.nav-link href="{{ route('contact') }}" label="Contactanos" route-name="contact" />
+            <div class="hidden md:flex items-center gap-2 ml-4 border-l border-slate-800 pl-4">
+                @guest
+                    <div class="flex gap-5 items-center">
+                        <a href="{{ route('login') }}" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+                            Iniciar sesión
+                        </a>
+                        <a href="{{ route('register') }}" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-medium transition-all shadow-lg shadow-blue-500/20">
+                            Registrate
+                        </a>
+                    </div>
+                @else
+                    <a href="{{ route('dashboard') }}" class="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-sm font-medium transition-all">
+                        <i data-lucide="layout-dashboard" class="size-4"></i> Dashboard
                     </a>
-                    <a href="{{ route('home') }}#desarrollo" class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-900 hover:text-blue-400 transition-all duration-150">
-                        <i data-lucide="code" class="size-4"></i>
-                        <span class="text-sm">Desarrollo Web</span>
-                    </a>
-                </div>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="text-sm font-medium text-slate-400 hover:text-red-400 transition-colors px-2">
+                            Salir
+                        </button>
+                    </form>
+                @endguest
             </div>
         </div>
 
-        <a href="{{ route('contact') }}"
-           class="transition-colors duration-200 {{ Route::is('contact') ? 'text-blue-500 font-bold' : 'text-slate-300 hover:text-blue-400' }}">
-            Contacto
-        </a>
-    </div>
 
-    <button id="mobile-toggle-btn" class="md:hidden flex items-center justify-center p-2 text-slate-300 hover:text-blue-400 focus:outline-none cursor-pointer z-50">
-        <i id="hamburger-icon" data-lucide="menu" class="size-6 transition-transform duration-200"></i>
-    </button>
+        <button @click="$dispatch('toggle-sidebar')" class="md:hidden flex items-center justify-center p-2.5 rounded-xl bg-slate-900/50 text-slate-300 hover:text-white hover:bg-slate-900 border border-slate-800/50 focus:outline-none cursor-pointer z-50 transition-all">
+            <i id="hamburger-icon" data-lucide="menu" class="size-5 transition-transform duration-200"></i>
+        </button>
+    </div>
 </nav>
 
-<div id="sidebar-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
+<div id="sidebar-overlay" class="fixed inset-0 bg-black/70 backdrop-blur-md z-40 hidden opacity-0 transition-opacity duration-300"></div>
 
-<aside id="mobile-sidebar" class="fixed top-0 right-0 h-full w-72 bg-slate-950/95 backdrop-blur-xl border-l border-slate-800/80 z-40 translate-x-full transition-transform duration-300 ease-in-out flex flex-col p-6 pt-24">
-    <div class="flex flex-col gap-6 text-base font-semibold">
-        <a href="{{ route('home') }}"
-           class="p-3 rounded-xl transition-all duration-150 flex items-center gap-3 {{ Route::is('home') ? 'bg-blue-500/10 text-blue-400' : 'text-slate-300 hover:bg-slate-900' }}">
-            <i data-lucide="home" class="size-5"></i> Inicio
-        </a>
 
-        <a href="{{ route('about') }}"
-           class="p-3 rounded-xl transition-all duration-150 flex items-center gap-3 {{ Route::is('about') ? 'bg-blue-500/10 text-blue-400' : 'text-slate-300 hover:bg-slate-900' }}">
-            <i data-lucide="users" class="size-5"></i> Nosotros
-        </a>
+<div x-data="{ open: false }"
+     @toggle-sidebar.window="open = !open"
+     x-show="open"
+     x-transition:enter="transition-opacity duration-300"
+     x-transition:enter-start="opacity-0"
+     x-transition:enter-end="opacity-100"
+     x-transition:leave="transition-opacity duration-300"
+     x-transition:leave-start="opacity-100"
+     x-transition:leave-end="opacity-0"
+     @click="$dispatch('toggle-sidebar')"
+     @click="open = false"
+     class="fixed inset-0 bg-black/70 backdrop-blur-md z-40"
+     x-cloak>
+</div>
 
-        <div class="border-t border-slate-800/60 pt-4 mt-2">
-            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider px-3">Servicios</span>
-            <div class="flex flex-col gap-2 mt-3">
-                <a href="{{ route('home') }}#soporte" class="mobile-nav-link p-3 rounded-xl text-slate-400 hover:bg-slate-900 hover:text-blue-400 transition-all duration-150 flex items-center gap-3">
-                    <i data-lucide="monitor" class="size-5"></i> Soporte Técnico
-                </a>
-                <a href="{{ route('home') }}#desarrollo" class="mobile-nav-link p-3 rounded-xl text-slate-400 hover:bg-slate-900 hover:text-blue-400 transition-all duration-150 flex items-center gap-3">
-                    <i data-lucide="code" class="size-5"></i> Desarrollo Web
-                </a>
+<aside x-data="{ open: false }"
+       @toggle-sidebar.window="open = !open"
+       x-show="open"
+       x-transition:enter="transition-transform duration-300 ease-out"
+       x-transition:enter-start="translate-x-full"
+       x-transition:enter-end="translate-x-0"
+       x-transition:leave="transition-transform duration-300 ease-in"
+       x-transition:leave-start="translate-x-0"
+       x-transition:leave-end="translate-x-full"
+       class="fixed top-0 right-0 h-full w-80 bg-slate-950/95 backdrop-blur-2xl border-l border-slate-900 z-40 p-6 pt-28"
+       x-cloak>
+
+    <div class="flex flex-col gap-3 text-base font-medium" @click="open = false">
+        <x-navbar.sidebar-link href="{{ route('home') }}" label="Inicio" icon="home" route-name="home" />
+        <x-navbar.sidebar-link href="{{ route('about') }}" label="Nosotros" icon="users" route-name="about" />
+        <x-navbar.sidebar-link href="{{ route('blog.index') }}" label="Blog" icon="book-open" route-name="blog.index" />
+
+        <div class="border-t border-slate-900 pt-4 mt-2">
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-widest px-3.5">Servicios</span>
+            <div class="flex flex-col gap-1.5 mt-3">
+                @foreach ($services as $service)
+                    <a href="#" class="p-3.5 rounded-xl text-slate-400 hover:bg-slate-900 hover:text-white transition-all duration-200 flex items-center gap-3.5">
+                        <i data-lucide="{{ $service->icon }}" class="size-5 text-slate-500"></i> {{ $service->name }}
+                    </a>
+                @endforeach
             </div>
         </div>
+        <x-navbar.sidebar-link href="{{ route('contact') }}" label="Contacto" icon="mail" route-name="contact" />
 
-        <a href="{{ route('contact') }}"
-           class="p-3 rounded-xl transition-all duration-150 flex items-center gap-3 border-t border-slate-800/60 pt-6 {{ Route::is('contact') ? 'bg-blue-500/10 text-blue-400' : 'text-slate-300 hover:bg-slate-900' }}">
-            <i data-lucide="mail" class="size-5"></i> Contacto
-        </a>
-    </div>
+        </div>
 </aside>
 
-<div class="h-[81px]"></div>
-
-<script>
-    const btn = document.getElementById('menu-btn');
-    const menu = document.getElementById('menu-dropdown');
-    const arrow = document.getElementById('menu-arrow');
-    const navbar = document.getElementById('main-navbar');
-
-    const mobileToggleBtn = document.getElementById('mobile-toggle-btn');
-    const hamburgerIcon = document.getElementById('hamburger-icon');
-    const mobileSidebar = document.getElementById('mobile-sidebar');
-    const sidebarOverlay = document.getElementById('sidebar-overlay');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, #mobile-sidebar a');
-
-    function closeMenu() {
-        if (!menu.classList.contains('hidden')) {
-            menu.classList.add('opacity-0', 'scale-95');
-            menu.classList.remove('opacity-100', 'scale-100');
-            arrow.classList.remove('rotate-180');
-            setTimeout(() => menu.classList.add('hidden'), 200);
-        }
-    }
-
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isHidden = menu.classList.contains('hidden');
-        if (isHidden) {
-            menu.classList.remove('hidden');
-            setTimeout(() => {
-                menu.classList.remove('opacity-0', 'scale-95');
-                menu.classList.add('opacity-100', 'scale-100');
-                arrow.classList.add('rotate-180');
-            }, 10);
-        } else {
-            closeMenu();
-        }
-    });
-
-    function openSidebar() {
-        mobileSidebar.classList.remove('translate-x-full');
-        sidebarOverlay.classList.remove('hidden');
-        setTimeout(() => sidebarOverlay.classList.add('opacity-100'), 10);
-        hamburgerIcon.setAttribute('data-lucide', 'x');
-        lucide.createIcons();
-    }
-
-    function closeSidebar() {
-        mobileSidebar.classList.add('translate-x-full');
-        sidebarOverlay.classList.remove('opacity-100');
-        setTimeout(() => sidebarOverlay.classList.add('hidden'), 300);
-        hamburgerIcon.setAttribute('data-lucide', 'menu');
-        lucide.createIcons();
-    }
-
-    mobileToggleBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isClosed = mobileSidebar.classList.contains('translate-x-full');
-        if (isClosed) openSidebar(); else closeSidebar();
-    });
-
-    sidebarOverlay.addEventListener('click', closeSidebar);
-    document.addEventListener('click', () => {
-        closeMenu();
-    });
-
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', closeSidebar);
-    });
-
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
-            navbar.classList.remove('py-6', 'bg-transparent');
-            navbar.classList.add('py-4', 'bg-slate-950/80', 'backdrop-blur-md', 'shadow-lg', 'shadow-black/20');
-        } else {
-            navbar.classList.remove('py-4', 'bg-slate-950/80', 'backdrop-blur-md', 'shadow-lg', 'shadow-black/20');
-            navbar.classList.add('py-6', 'bg-transparent');
-        }
-    });
-</script>
+<div class="pt-24 sm:pt-28"></div>

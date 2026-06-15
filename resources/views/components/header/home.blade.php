@@ -1,5 +1,5 @@
 <header class="relative py-24 sm:py-32 px-6 text-center overflow-hidden bg-[#0b1329]">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[360px] bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="relative max-w-4xl mx-auto z-10">
         <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">

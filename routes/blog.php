@@ -9,9 +9,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/api/blog/search', [BlogController::class, 'search']);
 Route::get('blog/{post}', [BlogController::class, 'show'])->name('blog.show');
-Route::get('salto', function () {
-  return 'test';
-})->name('comments.store');
 
 Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(function () {
     Route::resource('blog', PostController::class)->parameters(['blog' => 'post'])->except('show');

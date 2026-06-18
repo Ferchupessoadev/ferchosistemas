@@ -22,7 +22,7 @@
                         <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-500 group-focus-within:text-blue-500 transition-colors duration-200">
                             <i data-lucide="user" class="size-5"></i>
                         </span>
-                        <input type="text" name="name" value="{{ old('name') }}" placeholder="Juan Pérez"
+                        <input type="text" tabIndex="1" name="name" value="{{ old('name') }}" placeholder="Juan Pérez"
                             class="w-full pl-11 pr-4 py-3.5 bg-slate-950/60 border @error('name') border-red-500/50 @else border-slate-800 @enderror rounded-xl text-white placeholder-slate-600 outline-none transition-all focus:ring-4 focus:ring-blue-500/20"
                             required>
                     </div>
@@ -34,7 +34,7 @@
                         <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-500 group-focus-within:text-blue-500 transition-colors duration-200">
                             <i data-lucide="mail" class="size-5"></i>
                         </span>
-                        <input type="email" name="email" value="{{ old('email') }}" placeholder="tu@ejemplo.com"
+                        <input type="email" tabIndex="2" name="email" value="{{ old('email') }}" placeholder="tu@ejemplo.com"
                             class="w-full pl-11 pr-4 py-3.5 bg-slate-950/60 border @error('email') border-red-500/50 @else border-slate-800 @enderror rounded-xl text-white placeholder-slate-600 outline-none transition-all focus:ring-4 focus:ring-blue-500/20"
                             required>
                     </div>
@@ -46,7 +46,7 @@
                         <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-500 group-focus-within:text-blue-500 transition-colors duration-200">
                             <i data-lucide="lock" class="size-5"></i>
                         </span>
-                        <input type="password" name="password" placeholder="••••••••"
+                        <input type="password" tabIndex="3" name="password" placeholder="••••••••"
                             class="w-full pl-11 pr-4 py-3.5 bg-slate-950/60 border @error('password') border-red-500/50 @else border-slate-800 @enderror rounded-xl text-white placeholder-slate-600 outline-none transition-all focus:ring-4 focus:ring-blue-500/20"
                             required>
                     </div>
@@ -58,7 +58,7 @@
                         <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-500 group-focus-within:text-blue-500 transition-colors duration-200">
                             <i data-lucide="shield-check" class="size-5"></i>
                         </span>
-                        <input type="password" name="password_confirmation" placeholder="••••••••"
+                        <input type="password" tabIndex="4" name="password_confirmation" placeholder="••••••••"
                             class="w-full pl-11 pr-4 py-3.5 bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-600 outline-none transition-all focus:ring-4 focus:ring-blue-500/20"
                             required>
                     </div>
@@ -66,6 +66,7 @@
 
                 <div class="pt-2">
                     <button type="submit"
+                        tabIndex="5"
                         class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer">
                         Crear Cuenta
                     </button>

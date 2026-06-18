@@ -3,16 +3,14 @@
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('landing.home');
-})->name('home');
+Route::view('/', 'landing.home')->name('home');
 
-Route::get('/servicios', fn() => view('landing.services'))->name('services');
+Route::view('/servicios', 'landing.services')->name('services');
 
-Route::get('/nosotros', fn() => view('landing.aboutas'))->name('about');
+Route::view('/nosotros', 'landing.aboutas')->name('about');
 
 
-Route::get('/contacto', fn() => view('landing.contact'))->name('contact');
+Route::view('/contacto', 'landing.contact')->name('contact');
 
 
 Route::post('/contacto', [ContactController::class, 'store'])

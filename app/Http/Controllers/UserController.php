@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('dashboard.users.index');
+        return view('dashboard.users.index', compact('users'));
     }
 
     /**
@@ -59,8 +59,11 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        $emailUser = $user->email;
+        $user->delete();
+
+        return back()->with('success', 'Usuario ' . $emailUser . " eliminado correctamente.");
     }
 }
